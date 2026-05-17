@@ -1,38 +1,64 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from "@eslint/js";
+import globals from "globals";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import prettier from "eslint-plugin-prettier";
+import prettierConfig from "eslint-config-prettier";
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ["dist", ".git", "node_modules"] },
   {
-    files: ['**/*.{js,jsx}'],
+    files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node, // добавил для Node.js окружения
+      },
       parserOptions: {
-        ecmaVersion: 'latest',
+        ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
-    settings: { react: { version: '18.3' } },
+    settings: {
+      react: {
+        version: "19.0", // 👈 исправил на вашу версию React
+      },
+    },
     plugins: {
       react,
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+      prettier,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
-      ...react.configs['jsx-runtime'].rules,
+      ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
-      'react/jsx-no-target-blank': 'off',
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
+      ...prettierConfig.rules, // 👈 отключает конфликтующие правила
+
+      // Ваши кастомные правила
+      "react/jsx-no-target-blank": "off",
+      "react/prop-types": "warn",
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+
+      // Настройки Prettier
+      "prettier/prettier": [
+        "error",
+        {
+          singleQuote: false,
+          printWidth: 130,
+          tabWidth: 2,
+          trailingComma: "es5",
+          semi: true,
+          bracketSpacing: true,
+          arrowParens: "always",
+          endOfLine: "auto",
+        },
       ],
     },
   },
-]
+];

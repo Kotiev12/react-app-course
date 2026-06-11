@@ -41,7 +41,7 @@ export default [
       ...prettierConfig.rules, // 👈 отключает конфликтующие правила
 
       // Ваши кастомные правила
-      "react/jsx-no-target-blank": "off",
+      "react/jsx-no-target-blank": "warn",
       "react/prop-types": "warn",
       "react/display-name": "off",
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],

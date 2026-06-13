@@ -4,6 +4,7 @@ import cls from "./QuestionForm.module.css";
 export const QuestionForm = ({ formAction, state, isPending, submitBtnText }) => {
   return (
     <form action={formAction} className={cls.form}>
+      <input type="text" name="questionId" defaultValue={state.id} hidden />
       <div className={cls.formControl}>
         <label htmlFor="questionField">Question: </label>
         <textarea
@@ -29,11 +30,11 @@ export const QuestionForm = ({ formAction, state, isPending, submitBtnText }) =>
         ></textarea>
       </div>
       <div className={cls.formControl}>
-        <label htmlFor="descritionField">Descrition: </label>
+        <label htmlFor="descriptionField">Descrition: </label>
         <textarea
-          defaultValue={state.descrition}
+          defaultValue={state.description}
           name="descrition"
-          id="descritionField"
+          id="descriptionField"
           cols="30"
           rows="5"
           required

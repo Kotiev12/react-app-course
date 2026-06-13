@@ -559,37 +559,12 @@
     {
       "id": "e5c9",
       "question": "Ты крут в React?",
-      "answer": "🍏 канэшна 🍏",
+      "answer": "НЕТ",
       "description": "Потому что React мне очень нравится и я уже много с ним практикуюсь",
       "resources": [],
       "level": 1,
-      "completed": false
-    },
-    {
-      "id": "d031",
-      "question": "aa",
-      "answer": "ss",
-      "resources": [],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "6f24",
-      "question": "aa",
-      "answer": "aa",
-      "resources": [
-        "aa"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "d1d4",
-      "question": "rfr ns ",
-      "answer": "norm",
-      "resources": [],
-      "level": 1,
-      "completed": false
+      "completed": false,
+      "editDate": "14.06.2026, 00:13"
     }
   ]
 }
